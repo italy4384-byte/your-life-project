@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
   <style>
-    /* 全局统一浅绿大草原背景 */
+    /* 全局统一云朵背景（清空所有草原相关设定） */
     body {
-      background: url('http://bpic.588ku.com//back_origin_min_pic/19/04/12/d81d4787d6b98e43012cc315f81ab318.jpg!/fw/750/quality/99/unsharp/true/compress/true') no-repeat center center fixed !important;
-      background-size: cover !important;
+      background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center fixed !important;
+      background-size: cover !important; /* 自适应铺满屏幕 */
       position: relative !important;
     }
-    /* 全局遮罩：平衡背景与文字可读性 */
+    /* 全局遮罩：平衡云朵背景与文字可读性 */
     body::before {
       content: "";
       position: fixed;
@@ -20,18 +20,18 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.88); /* 适度透明，保留草原纹理 */
+      background: rgba(255, 255, 255, 0.85); /* 适度透明，保留云朵纹理 */
       z-index: -1;
     }
     /* 隐藏左侧原标题 */
     .sidebar h1.app-name {
       display: none !important;
     }
-    /* 侧边栏：统一草原背景+半透明遮罩 */
+    /* 侧边栏：统一云朵背景+半透明遮罩 */
     .sidebar {
       width: 280px !important;
       padding: 20px 10px !important;
-      background: url('http://bpic.588ku.com//back_origin_min_pic/19/04/12/d81d4787d6b98e43012cc315f81ab318.jpg!/fw/750/quality/99/unsharp/true/compress/true') no-repeat center center !important;
+      background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center !important;
       background-size: cover !important;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       position: relative !important;
@@ -44,7 +44,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.9);
       z-index: -1;
     }
     /* 标题容器：整体居中，副标题单独右对齐 */
@@ -54,25 +54,25 @@
       width: 100% !important;
       text-align: center !important;
     }
-    /* 主标题：居中+深绿色系+轻微阴影 */
+    /* 主标题：居中+深蓝色系（适配云朵）+轻微阴影 */
     .title-main {
       font-size: 48px !important;
       font-weight: 900 !important;
-      color: #2d5a42 !important; /* 适配草原的深绿色文字 */
+      color: #2c4a6b !important; /* 适配云朵的深蓝色文字 */
       display: block !important;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     }
-    /* 副标题：更小一号+右对齐+深灰绿色 */
+    /* 副标题：更小一号+右对齐+浅藏青色 */
     .title-sub {
       font-size: 24px !important;
       font-weight: 600 !important;
-      color: #406b53 !important; /* 适配草原的灰绿色文字 */
+      color: #4a6d94 !important; /* 适配云朵的浅藏青色文字 */
       display: block !important;
       text-align: right !important;
       margin-top: 5px !important;
       padding-right: 10px !important;
     }
-    /* 右侧内容区：统一草原背景+半透明遮罩 */
+    /* 右侧内容区：统一云朵背景+半透明遮罩 */
     .content {
       margin-left: 300px !important;
       padding: 40px 2% !important;
@@ -81,7 +81,7 @@
       letter-spacing: 1.5px;
       max-width: calc(100% - 300px);
       box-sizing: border-box;
-      background: url('http://bpic.588ku.com//back_origin_min_pic/19/04/12/d81d4787d6b98e43012cc315f81ab318.jpg!/fw/750/quality/99/unsharp/true/compress/true') no-repeat center center !important;
+      background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center !important;
       background-size: cover !important;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
       border-radius: 8px;
@@ -95,36 +95,36 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 8px;
       z-index: -1;
     }
-    /* 其他标题样式：适配草原色系 */
+    /* 其他标题样式：适配云朵色系（清空草原相关） */
     .content h2 {
       font-size: 40px !important;
       font-weight: 800 !important;
       margin: 25px 0 !important;
-      color: #2d5a42 !important;
-      border-bottom: 3px solid #e8f0ec !important; /* 浅绿分割线 */
+      color: #2c4a6b !important;
+      border-bottom: 3px solid #e8edf2 !important; /* 浅蓝分割线 */
       padding-bottom: 10px !important;
     }
     .content h3 {
       font-size: 32px !important;
       font-weight: 700 !important;
       margin: 20px 0 !important;
-      color: #406b53 !important;
+      color: #4a6d94 !important;
     }
-    /* 链接：适配草原的暖橙色，更醒目 */
+    /* 链接：适配云朵的天蓝色，更醒目 */
     .content a {
       font-size: 24px !important;
-      color: #e67e22 !important;
+      color: #3498db !important;
       text-decoration: underline !important;
     }
-    /* 正文：深绿色系，保证对比度 */
+    /* 正文：深蓝色系，保证对比度（清空草原相关） */
     .content p, .content ul, .content ol {
       margin-bottom: 25px !important;
       width: 100%;
-      color: #234936 !important;
+      color: #1e3a58 !important;
     }
     .content li {
       margin: 15px 0 !important;
