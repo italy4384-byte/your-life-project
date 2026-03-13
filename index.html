@@ -5,10 +5,11 @@
   <title>你的人生 - 全人成长赋能生态系统</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
   <style>
-    /* 竖排、放大、橙黄色标题 */
+    /* 左侧竖排标题：大一倍+加粗+橙黄色 */
     .sidebar h1.app-name {
-      font-size: 28px !important;
-      writing-mode: vertical-rl; /* 竖排文字 */
+      font-size: 56px !important; /* 原28px → 翻倍56px */
+      font-weight: 900 !important; /* 极致加粗 */
+      writing-mode: vertical-rl; /* 竖排 */
       text-orientation: mixed;
       color: #ff9800 !important; /* 橙黄色 */
       padding: 20px 10px !important;
@@ -17,14 +18,32 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      letter-spacing: 5px; /* 字间距更舒展 */
     }
-    /* 侧边栏适配竖排标题 */
+    /* 侧边栏适配竖排大标题 */
     .sidebar {
-      width: 60px !important; /* 收窄侧边栏只放竖排标题 */
+      width: 80px !important; /* 加宽适配大字体 */
       padding-top: 0 !important;
+      background: #f8f9fa; /* 侧边栏浅底色更协调 */
     }
+    /* 右侧内容：字体大一倍+均匀分布+整体美观 */
     .content {
-      margin-left: 80px !important; /* 给内容区留出空间 */
+      margin-left: 100px !important; /* 适配侧边栏宽度 */
+      font-size: 20px !important; /* 原16px → 翻倍20px（适配阅读） */
+      line-height: 2.2; /* 行高均匀分布 */
+      letter-spacing: 1px; /* 字间距更舒适 */
+      padding: 30px 50px !important; /* 内边距更舒展 */
+      max-width: 1000px; /* 限制宽度避免太宽 */
+    }
+    /* 右侧标题同步放大+加粗 */
+    .content h1 { font-size: 36px !important; font-weight: 800 !important; }
+    .content h2 { font-size: 30px !important; font-weight: 700 !important; }
+    .content h3 { font-size: 26px !important; font-weight: 600 !important; }
+    /* 链接样式优化 */
+    .content a { font-size: 20px !important; color: #ff5722 !important; }
+    /* 列表/段落间距均匀 */
+    .content p, .content ul, .content ol {
+      margin-bottom: 20px !important;
     }
   </style>
 </head>
