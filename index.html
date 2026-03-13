@@ -6,9 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
   <style>
-    /* 隐藏左侧标题 */
+    /* 隐藏左侧原标题，自定义页面顶部标题样式 */
     .sidebar h1.app-name {
       display: none !important;
+    }
+    /* 自定义页面顶部标题（拆分+换行+右对齐） */
+    .content > h1:first-child {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-end !important;
+      margin-bottom: 40px !important;
+    }
+    .content > h1:first-child span.title-main {
+      font-size: 48px !important;
+      font-weight: 900 !important;
+      color: #2c3e50 !important;
+    }
+    .content > h1:first-child span.title-sub {
+      font-size: 32px !important; /* 副标题小一号 */
+      font-weight: 600 !important;
+      color: #4a6583 !important;
+      margin-top: 5px !important;
     }
     /* 侧边栏只保留导航，宽度自适应 */
     .sidebar {
@@ -16,23 +34,17 @@
       padding: 20px 10px !important;
       background: #f8f9fa;
     }
-    /* 右侧内容：自适应布局+字体翻倍+均匀分布 */
+    /* 右侧内容：收窄页边距+字体翻倍+自适应 */
     .content {
       margin-left: 300px !important;
-      padding: 40px 5% !important;
-      font-size: 24px !important; /* 基础字体再翻倍（原20px→24px） */
-      line-height: 2.5; /* 行高适配大字体 */
+      padding: 40px 2% !important; /* 页边距从5%收窄到2% */
+      font-size: 24px !important;
+      line-height: 2.5;
       letter-spacing: 1.5px;
       max-width: calc(100% - 320px); /* 自适应页面宽度 */
       box-sizing: border-box;
     }
-    /* 标题层级放大+加粗，自适应 */
-    .content h1 {
-      font-size: 48px !important;
-      font-weight: 900 !important;
-      margin: 30px 0 !important;
-      color: #2c3e50;
-    }
+    /* 其他标题层级样式 */
     .content h2 {
       font-size: 40px !important;
       font-weight: 800 !important;
@@ -47,7 +59,7 @@
       margin: 20px 0 !important;
       color: #4a6583;
     }
-    /* 链接、列表、段落自适应 */
+    /* 链接、列表、段落样式 */
     .content a {
       font-size: 24px !important;
       color: #ff5722 !important;
@@ -60,7 +72,7 @@
     .content li {
       margin: 15px 0 !important;
     }
-    /* 移动端自适应（手机/平板） */
+    /* 移动端自适应 */
     @media (max-width: 992px) {
       .sidebar {
         width: 220px !important;
@@ -68,9 +80,11 @@
       .content {
         margin-left: 240px !important;
         max-width: calc(100% - 260px);
+        padding: 30px 1.5% !important;
         font-size: 20px !important;
       }
-      .content h1 { font-size: 40px !important; }
+      .content > h1:first-child span.title-main { font-size: 40px !important; }
+      .content > h1:first-child span.title-sub { font-size: 28px !important; }
       .content h2 { font-size: 32px !important; }
       .content h3 { font-size: 28px !important; }
     }
@@ -83,7 +97,7 @@
       .content {
         margin-left: 0 !important;
         max-width: 100% !important;
-        padding: 20px 3% !important;
+        padding: 20px 1% !important;
       }
     }
   </style>
@@ -96,7 +110,22 @@
       name: '', // 清空左侧标题
       repo: 'https://github.com/italy4384-byte/your-life-project',
       loadSidebar: true,
-      subMaxLevel: 2
+      subMaxLevel: 2,
+      // 自定义首页标题渲染
+      markdown: {
+        renderer: {
+          heading: function(text, level) {
+            // 匹配首页一级标题并拆分
+            if (level === 1 && text === '你的人生 - 全人成长赋能生态系统') {
+              return `<h1>
+                <span class="title-main">你的人生</span>
+                <span class="title-sub">- 全人成长赋能生态系统</span>
+              </h1>`;
+            }
+            return this.origin.heading.apply(this, arguments);
+          }
+        }
+      }
     }
   </script>
 </body>
