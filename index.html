@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>你的人生 - 全人成长赋能生态系统</title>
-  <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; }
-    h1 { color: #2c3e50; }
-    a { color: #3498db; }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
 </head>
 <body>
-  <h1>你的人生 - 全人成长赋能生态系统</h1>
-  <p>国内首个聚焦个性化自我实现的全人成长赋能平台，从自我发现到资源共生，助力每个人活出饱满而有意义的人生。</p>
-  <p><a href="README.md">查看完整项目文档</a></p>
+  <div id="app"></div>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script>
+    window.$docsify = {
+      name: '你的人生',
+      repo: 'https://github.com/italy4384-byte/your-life-project',
+      loadSidebar: true,
+      subMaxLevel: 2
+    }
+  </script>
 </body>
 </html>
