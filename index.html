@@ -29,10 +29,10 @@
       z-index: -1;
     }
 
-    /* 1. 顶部导航条（可正常跳转） */
+    /* 1. 顶部导航条（真实文件链接） */
     .top-nav {
       width: 100%;
-      height: 60px;
+      height: 70px;
       background: rgba(255, 255, 255, 0.95);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       position: fixed;
@@ -42,110 +42,77 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 50px;
+      gap: 35px;
       padding: 0 20px;
       box-sizing: border-box;
+      flex-wrap: wrap;
     }
-    .top-nav a {
+    .top-nav .nav-item {
+      position: relative;
+    }
+    .top-nav .nav-item > a {
       color: #2c4a6b !important;
       font-size: 17px !important;
       font-weight: 600 !important;
       text-decoration: none !important;
-      padding: 8px 15px;
+      padding: 10px 15px;
       border-radius: 4px;
       transition: all 0.3s ease;
-      cursor: pointer;
+      display: inline-block;
     }
-    .top-nav a:hover {
+    .top-nav .nav-item > a:hover {
       background: rgba(52, 152, 219, 0.1);
       color: #3498db !important;
     }
-    .top-nav a i {
+    .top-nav .nav-item > a i {
       margin-right: 8px;
     }
 
-    /* 2. 侧边导航（详细文档内容入口，替代原详细文档标题） */
-    .sidebar {
-      width: 260px !important;
-      padding: 80px 20px 60px !important;
-      background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center !important;
-      background-size: cover !important;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      position: fixed !important;
-      height: 100vh !important;
-      box-sizing: border-box;
-      overflow-y: auto;
-      left: 0;
-      top: 0;
-    }
-    .sidebar::before {
-      content: "";
+    /* 下拉菜单（文件链接） */
+    .top-nav .dropdown-menu {
+      display: none;
       position: absolute;
-      top: 0;
+      top: 100%;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.92);
-      z-index: -1;
-    }
-    /* 侧边导航菜单样式 */
-    .sidebar-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar-menu li {
-      margin: 10px 0;
-    }
-    .sidebar-menu li a {
-      color: #2c4a6b !important;
-      font-size: 16px !important;
-      text-decoration: none !important;
-      padding: 10px 12px;
-      display: block;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       border-radius: 6px;
+      padding: 10px 0;
+      min-width: 200px;
+      z-index: 9999;
+    }
+    .top-nav .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: #2c4a6b !important;
+      font-size: 15px !important;
+      text-decoration: none !important;
       transition: all 0.2s ease;
     }
-    .sidebar-menu li a:hover {
-      background: rgba(52, 152, 219, 0.15);
+    .top-nav .dropdown-menu a:hover {
+      background: rgba(52, 152, 219, 0.1);
       color: #3498db !important;
-      padding-left: 18px;
+      padding-left: 25px;
     }
-    .sidebar-menu li a i {
+    .top-nav .dropdown-menu a i {
       margin-right: 10px;
       width: 16px;
       text-align: center;
     }
-    .sidebar-menu li .sub-menu {
-      list-style: none;
-      padding-left: 20px;
-      margin-top: 5px;
-      display: none;
-    }
-    .sidebar-menu li .sub-menu.active {
+    .top-nav .nav-item:hover .dropdown-menu {
       display: block;
     }
-    .sidebar-menu li .sub-menu li a {
-      font-size: 14px !important;
-      padding: 8px 12px;
-      color: #4a6d94 !important;
-    }
 
-    /* 隐藏原Docsify侧边标题 */
-    .sidebar h1.app-name {
-      display: none !important;
-    }
-
-    /* 3. 主内容区（加宽排版+缩小正文字体） */
+    /* 2. 主内容区（取消竖向导航后加宽） */
     .main-content {
-      margin: 70px 30px 70px 300px !important;
+      margin: 80px 50px 70px 50px !important;
       padding: 0 40px !important;
-      font-size: 16px !important; /* 正文大幅缩小，标题保持不变 */
-      line-height: 2.0 !important;
+      font-size: 16px !important;
+      line-height: 1.8 !important;
       letter-spacing: 0.5px !important;
-      max-width: calc(100% - 320px) !important;
+      max-width: calc(100% - 100px) !important;
       box-sizing: border-box;
-      min-height: calc(100vh - 140px);
+      min-height: calc(100vh - 150px);
     }
 
     /* 标题容器 */
@@ -156,7 +123,7 @@
       text-align: center !important;
     }
     .title-main {
-      font-size: 48px !important; /* 标题大小不变 */
+      font-size: 48px !important;
       font-weight: 900 !important;
       color: #2c4a6b !important;
       display: block !important;
@@ -164,7 +131,7 @@
       margin-bottom: 10px !important;
     }
     .title-sub {
-      font-size: 24px !important; /* 副标题大小不变 */
+      font-size: 24px !important;
       font-weight: 600 !important;
       color: #4a6d94 !important;
       display: block !important;
@@ -173,7 +140,7 @@
       padding-right: 10px !important;
     }
 
-    /* 内容区块（加宽+宽松排版） */
+    /* 内容区块 */
     .content-block {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 12px;
@@ -185,7 +152,7 @@
       box-sizing: border-box;
     }
     .content-block h2 {
-      font-size: 32px !important; /* 二级标题大小不变 */
+      font-size: 32px !important;
       font-weight: 800 !important;
       color: #2c4a6b !important;
       margin: 0 0 25px !important;
@@ -197,7 +164,7 @@
       margin-right: 10px;
     }
     .content-block h3 {
-      font-size: 22px !important; /* 三级标题微调 */
+      font-size: 22px !important;
       font-weight: 700 !important;
       color: #346b8d !important;
       margin: 20px 0 15px !important;
@@ -231,7 +198,7 @@
       text-decoration: underline !important;
     }
 
-    /* 4. 底部Footer */
+    /* 3. 底部Footer（移除普惠文字） */
     .footer {
       width: 100%;
       height: 60px;
@@ -256,61 +223,41 @@
       text-decoration: none !important;
     }
 
-    /* 锚点定位修正（适配固定导航） */
+    /* 锚点定位修正 */
     :target {
-      scroll-margin-top: 80px;
+      scroll-margin-top: 90px;
     }
 
     /* 移动端自适应 */
     @media (max-width: 1200px) {
-      .sidebar {
-        width: 240px !important;
+      .top-nav {
+        gap: 25px;
       }
       .main-content {
-        margin-left: 280px !important;
-        max-width: calc(100% - 300px) !important;
+        margin: 80px 30px 70px 30px !important;
+        max-width: calc(100% - 60px) !important;
         padding: 0 30px !important;
       }
     }
     @media (max-width: 992px) {
       .top-nav {
-        gap: 25px;
-        padding: 0 15px;
+        height: auto;
+        padding: 10px 15px;
+        gap: 15px;
+        justify-content: flex-start;
       }
-      .top-nav a {
+      .top-nav .nav-item > a {
         font-size: 15px !important;
-        padding: 8px 10px;
-      }
-      .sidebar {
-        width: 220px !important;
+        padding: 8px 12px;
       }
       .main-content {
-        margin-left: 260px !important;
-        max-width: calc(100% - 280px) !important;
+        margin: 100px 20px 70px 20px !important;
+        max-width: calc(100% - 40px) !important;
       }
       .title-main { font-size: 40px !important; }
       .title-sub { font-size: 22px !important; }
     }
     @media (max-width: 768px) {
-      .top-nav {
-        height: auto;
-        flex-wrap: wrap;
-        padding: 10px;
-        gap: 10px;
-        justify-content: flex-start;
-      }
-      .sidebar {
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important;
-        padding: 20px 15px !important;
-        margin-top: 60px;
-      }
-      .main-content {
-        margin: 120px 15px 70px 15px !important;
-        max-width: 100% !important;
-        padding: 0 20px !important;
-      }
       .content-block {
         padding: 25px !important;
       }
@@ -326,276 +273,110 @@
   </style>
 </head>
 <body>
-  <!-- 1. 顶部导航条（可跳转） -->
+  <!-- 1. 顶部导航条（包含真实文件链接） -->
   <div class="top-nav">
-    <a href="#/" onclick="jumpTo('home')"><i class="fas fa-home"></i>首页</a>
-    <a href="#/" onclick="toggleSubMenu('projectMenu')"><i class="fas fa-book"></i>项目介绍</a>
-    <a href="#/" onclick="toggleSubMenu('coreMenu')"><i class="fas fa-star"></i>核心体系</a>
-    <a href="#/" onclick="toggleSubMenu('planMenu')"><i class="fas fa-road"></i>实施规划</a>
-    <a href="#/" onclick="toggleSubMenu('aboutMenu')"><i class="fas fa-info-circle"></i>关于我们</a>
+    <div class="nav-item">
+      <a href="#/"><i class="fas fa-home"></i>首页</a>
+    </div>
+    <div class="nav-item">
+      <a href="javascript:;"><i class="fas fa-file-alt"></i>完整商业计划</a>
+      <div class="dropdown-menu">
+        <a href="./完整商业计划.md" target="_self"><i class="fas fa-file-word"></i>完整商业计划文档</a>
+        <a href="./商业计划-执行摘要.md" target="_self"><i class="fas fa-file-clipboard"></i>执行摘要</a>
+        <a href="./商业计划-市场分析.md" target="_self"><i class="fas fa-chart-line"></i>市场分析</a>
+        <a href="./商业计划-盈利模式.md" target="_self"><i class="fas fa-sack-dollar"></i>盈利模式</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="javascript:;"><i class="fas fa-star"></i>核心体系文件</a>
+      <div class="dropdown-menu">
+        <a href="./核心体系-成长体系.md" target="_self"><i class="fas fa-seedling"></i>成长体系</a>
+        <a href="./核心体系-赋能体系.md" target="_self"><i class="fas fa-bolt"></i>赋能体系</a>
+        <a href="./核心体系-保障体系.md" target="_self"><i class="fas fa-shield-halved"></i>保障体系</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="javascript:;"><i class="fas fa-road"></i>实施规划文件</a>
+      <div class="dropdown-menu">
+        <a href="./实施规划-启动阶段.md" target="_self"><i class="fas fa-rocket"></i>启动阶段</a>
+        <a href="./实施规划-执行阶段.md" target="_self"><i class="fas fa-person-running"></i>执行阶段</a>
+        <a href="./实施规划-优化阶段.md" target="_self"><i class="fas fa-arrows-spin"></i>优化阶段</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="javascript:;"><i class="fas fa-users"></i>关于我们文件</a>
+      <div class="dropdown-menu">
+        <a href="./关于我们-团队介绍.md" target="_self"><i class="fas fa-user-group"></i>团队介绍</a>
+        <a href="./关于我们-联系方式.md" target="_self"><i class="fas fa-envelope"></i>联系方式</a>
+        <a href="./关于我们-愿景使命.md" target="_self"><i class="fas fa-lightbulb"></i>愿景使命</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="javascript:;"><i class="fas fa-file-export"></i>其他文件</a>
+      <div class="dropdown-menu">
+        <a href="./用户调研分析报告.md" target="_self"><i class="fas fa-magnifying-glass-chart"></i>用户调研分析</a>
+        <a href="./风险评估与应对.md" target="_self"><i class="fas fa-triangle-exclamation"></i>风险评估</a>
+        <a href="./项目时间轴规划.md" target="_self"><i class="fas fa-calendar-days"></i>时间轴规划</a>
+      </div>
+    </div>
   </div>
 
-  <!-- 2. 侧边导航（详细文档内容入口） -->
-  <div class="sidebar">
-    <ul class="sidebar-menu" id="sidebarMenu">
-      <li><a href="#/" onclick="jumpTo('home')"><i class="fas fa-home"></i>首页</a></li>
-      <li>
-        <a href="javascript:;" onclick="toggleSubMenu('projectMenu')"><i class="fas fa-book"></i>项目介绍</a>
-        <ul class="sub-menu" id="projectMenu">
-          <li><a href="#/" onclick="jumpTo('project-overview')"><i class="fas fa-circle"></i>项目概述</a></li>
-          <li><a href="#/" onclick="jumpTo('project-goal')"><i class="fas fa-circle"></i>项目目标</a></li>
-          <li><a href="#/" onclick="jumpTo('project-value')"><i class="fas fa-circle"></i>项目价值</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="javascript:;" onclick="toggleSubMenu('coreMenu')"><i class="fas fa-star"></i>核心体系</a>
-        <ul class="sub-menu" id="coreMenu">
-          <li><a href="#/" onclick="jumpTo('core-system1')"><i class="fas fa-circle"></i>成长体系</a></li>
-          <li><a href="#/" onclick="jumpTo('core-system2')"><i class="fas fa-circle"></i>赋能体系</a></li>
-          <li><a href="#/" onclick="jumpTo('core-system3')"><i class="fas fa-circle"></i>保障体系</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="javascript:;" onclick="toggleSubMenu('planMenu')"><i class="fas fa-road"></i>实施规划</a>
-        <ul class="sub-menu" id="planMenu">
-          <li><a href="#/" onclick="jumpTo('plan-stage1')"><i class="fas fa-circle"></i>启动阶段</a></li>
-          <li><a href="#/" onclick="jumpTo('plan-stage2')"><i class="fas fa-circle"></i>执行阶段</a></li>
-          <li><a href="#/" onclick="jumpTo('plan-stage3')"><i class="fas fa-circle"></i>优化阶段</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="javascript:;" onclick="toggleSubMenu('aboutMenu')"><i class="fas fa-info-circle"></i>关于我们</a>
-        <ul class="sub-menu" id="aboutMenu">
-          <li><a href="#/" onclick="jumpTo('about-team')"><i class="fas fa-circle"></i>团队介绍</a></li>
-          <li><a href="#/" onclick="jumpTo('about-contact')"><i class="fas fa-circle"></i>联系方式</a></li>
-          <li><a href="#/" onclick="jumpTo('about-vision')"><i class="fas fa-circle"></i>愿景使命</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-  <!-- 3. 主内容区 -->
+  <!-- 2. 主内容区（取消竖向导航） -->
   <div class="main-content" id="app">
     <!-- 首页内容 -->
-    <div id="home" class="content-section">
-      <div class="title-container">
-        <span class="title-main">你的人生</span>
-        <span class="title-sub">- 全人成长赋能生态系统</span>
-      </div>
-
-      <div class="content-block">
-        <h2><i class="fas fa-info-circle"></i>项目简介</h2>
-        <p>「你的人生 - 全人成长赋能生态系统」致力于为每一位追求成长的个体提供全方位的成长支持体系，涵盖个人能力提升、职业发展规划、心理健康建设等多个维度，助力用户实现人生价值的最大化。</p>
-      </div>
-
-      <div class="content-block">
-        <h2><i class="fas fa-star"></i>核心优势</h2>
-        <ul>
-          <li>个性化成长路径设计，贴合不同用户的发展需求</li>
-          <li>多维度赋能体系，覆盖能力、资源、心态全方面</li>
-          <li>持续优化的实施策略，保证成长效果的落地性</li>
-          <li>专业的服务团队，提供全程陪伴式成长支持</li>
-        </ul>
-      </div>
+    <div class="title-container">
+      <span class="title-main">你的人生</span>
+      <span class="title-sub">- 全人成长赋能生态系统</span>
     </div>
 
-    <!-- 项目介绍 - 项目概述 -->
-    <div id="project-overview" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">项目介绍</span>
-        <span class="title-sub">- 项目概述</span>
-      </div>
-      <div class="content-block">
-        <p>本项目是一套以用户成长为核心的综合赋能体系，整合了心理学、管理学、职业规划等多领域的理论与实践经验，通过系统化的方法帮助用户梳理人生目标、提升核心能力、突破成长瓶颈。</p>
-        <p>项目采用“评估-规划-执行-反馈-优化”的闭环模式，确保每一位用户都能获得适合自己的成长方案，真正实现从认知到行动的全面提升。</p>
-      </div>
+    <div class="content-block">
+      <h2><i class="fas fa-info-circle"></i>项目简介</h2>
+      <p>「你的人生 - 全人成长赋能生态系统」致力于为每一位追求成长的个体提供全方位的成长支持体系，涵盖个人能力提升、职业发展规划、心理健康建设等多个维度，助力用户实现人生价值的最大化。</p>
     </div>
 
-    <!-- 项目介绍 - 项目目标 -->
-    <div id="project-goal" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">项目介绍</span>
-        <span class="title-sub">- 项目目标</span>
-      </div>
-      <div class="content-block">
-        <h3>短期目标</h3>
-        <p>帮助用户完成自我认知与定位，明确1-3年的成长目标，建立基础的成长习惯和方法体系。</p>
-        <h3>中期目标</h3>
-        <p>助力用户实现核心能力的显著提升，达成职业/人生阶段的关键里程碑，建立稳定的成长动力系统。</p>
-        <h3>长期目标</h3>
-        <p>培养用户的自主成长能力，形成可持续的成长模式，实现人生价值的持续提升和自我超越。</p>
-      </div>
+    <div class="content-block">
+      <h2><i class="fas fa-star"></i>核心优势</h2>
+      <ul>
+        <li>个性化成长路径设计，贴合不同用户的发展需求</li>
+        <li>多维度赋能体系，覆盖能力、资源、心态全方面</li>
+        <li>持续优化的实施策略，保证成长效果的落地性</li>
+        <li>专业的服务团队，提供全程陪伴式成长支持</li>
+      </ul>
     </div>
 
-    <!-- 其他内容区块（示例，可根据实际需求扩展） -->
-    <div id="project-value" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">项目介绍</span>
-        <span class="title-sub">- 项目价值</span>
-      </div>
-      <div class="content-block">
-        <p>项目的核心价值在于为用户提供“定制化、系统化、可持续”的成长解决方案，区别于传统的碎片化学习和零散的职业建议，真正从用户的整体人生发展角度出发，实现全维度的赋能。</p>
-      </div>
-    </div>
-
-    <div id="core-system1" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">核心体系</span>
-        <span class="title-sub">- 成长体系</span>
-      </div>
-      <div class="content-block">
-        <p>成长体系包含认知成长、能力成长、心态成长三个核心模块，通过科学的评估工具和训练方法，帮助用户实现从思维到行为的全面升级。</p>
-      </div>
-    </div>
-
-    <!-- 更多内容区块可按此格式扩展 -->
-    <div id="core-system2" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">核心体系</span>
-        <span class="title-sub">- 赋能体系</span>
-      </div>
-      <div class="content-block">
-        <p>赋能体系整合了资源对接、导师指导、社群支持等多种形式，为用户的成长提供全方位的资源和环境支持，解决成长过程中的各种障碍和问题。</p>
-      </div>
-    </div>
-
-    <div id="core-system3" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">核心体系</span>
-        <span class="title-sub">- 保障体系</span>
-      </div>
-      <div class="content-block">
-        <p>保障体系包含效果跟踪、反馈调整、风险应对等机制，确保成长方案的有效执行和及时优化，为用户的成长之路保驾护航。</p>
-      </div>
-    </div>
-
-    <div id="plan-stage1" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">实施规划</span>
-        <span class="title-sub">- 启动阶段</span>
-      </div>
-      <div class="content-block">
-        <p>启动阶段主要完成用户画像建立、成长需求评估、初步方案制定等工作，为后续的成长赋能打下坚实基础。</p>
-      </div>
-    </div>
-
-    <div id="plan-stage2" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">实施规划</span>
-        <span class="title-sub">- 执行阶段</span>
-      </div>
-      <div class="content-block">
-        <p>执行阶段按照制定的成长方案，分阶段推进各项能力提升和资源对接工作，定期进行进度跟踪和效果评估。</p>
-      </div>
-    </div>
-
-    <div id="plan-stage3" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">实施规划</span>
-        <span class="title-sub">- 优化阶段</span>
-      </div>
-      <div class="content-block">
-        <p>优化阶段根据执行过程中的反馈和效果，及时调整成长方案，强化优势领域，弥补短板，实现成长效果的最大化。</p>
-      </div>
-    </div>
-
-    <div id="about-team" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">关于我们</span>
-        <span class="title-sub">- 团队介绍</span>
-      </div>
-      <div class="content-block">
-        <p>我们的团队由心理学专家、职业规划师、企业管理顾问等多领域专业人士组成，拥有丰富的理论和实践经验，致力于为用户提供专业、贴心的成长赋能服务。</p>
-      </div>
-    </div>
-
-    <div id="about-contact" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">关于我们</span>
-        <span class="title-sub">- 联系方式</span>
-      </div>
-      <div class="content-block">
-        <p>如需了解更多项目信息或咨询相关服务，可通过以下方式联系我们：</p>
-        <ul>
-          <li>邮箱：contact@yourlife.com</li>
-          <li>电话：400-123-4567</li>
-          <li>地址：北京市朝阳区成长大厦1001室</li>
-        </ul>
-      </div>
-    </div>
-
-    <div id="about-vision" class="content-section" style="display: none;">
-      <div class="title-container">
-        <span class="title-main">关于我们</span>
-        <span class="title-sub">- 愿景使命</span>
-      </div>
-      <div class="content-block">
-        <p>我们的愿景：成为最值得信赖的全人成长赋能平台，助力每一个人成就更好的自己。</p>
-        <p>我们的使命：以专业的能力和真诚的服务，陪伴用户走过人生的每一个成长阶段，实现人生价值的最大化。</p>
-      </div>
+    <div class="content-block">
+      <h2><i class="fas fa-map-signs"></i>快速导航</h2>
+      <p>点击顶部导航栏中的对应菜单，可直接打开相关文件查看详细内容：</p>
+      <ul>
+        <li><strong>完整商业计划</strong>：包含项目的核心商业逻辑、市场分析、盈利模式等核心内容</li>
+        <li><strong>核心体系文件</strong>：详细阐述成长、赋能、保障三大核心体系的设计与落地</li>
+        <li><strong>实施规划文件</strong>：分阶段说明项目的启动、执行、优化全流程</li>
+        <li><strong>关于我们文件</strong>：介绍团队背景、联系方式及项目愿景使命</li>
+      </ul>
     </div>
   </div>
 
-  <!-- 4. 底部Footer -->
+  <!-- 3. 底部Footer（移除普惠文字） -->
   <div class="footer">
     <p>© 2026 你的人生 - 全人成长赋能生态系统 版权所有</p>
     <p>|</p>
-    <p>以成长为帆，赴人生山海 <a href="#/" onclick="jumpTo('about-contact')"><i class="fas fa-envelope"></i> 联系我们</a></p>
+    <p>以成长为帆，赴人生山海 <a href="./关于我们-联系方式.md" target="_self"><i class="fas fa-envelope"></i> 联系我们</a></p>
   </div>
 
-  <!-- 核心交互脚本（实现导航跳转） -->
+  <!-- Docsify配置（支持Markdown文件加载） -->
   <script>
-    // 跳转至指定内容区块
-    function jumpTo(sectionId) {
-      // 隐藏所有内容区块
-      document.querySelectorAll('.content-section').forEach(section => {
-        section.style.display = 'none';
-      });
-      // 显示目标区块
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) {
-        targetSection.style.display = 'block';
-        // 滚动到目标位置
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      // 关闭所有展开的子菜单
-      document.querySelectorAll('.sub-menu').forEach(menu => {
-        menu.classList.remove('active');
-      });
-    }
-
-    // 切换子菜单展开/收起
-    function toggleSubMenu(menuId) {
-      const menu = document.getElementById(menuId);
-      // 关闭其他子菜单
-      document.querySelectorAll('.sub-menu').forEach(m => {
-        if (m.id !== menuId) {
-          m.classList.remove('active');
-        }
-      });
-      // 切换当前子菜单
-      menu.classList.toggle('active');
-    }
-
-    // 页面加载默认显示首页
-    window.onload = function() {
-      jumpTo('home');
-    };
-
-    // Docsify配置（兼容原有功能）
     window.$docsify = {
       name: '',
       repo: 'https://github.com/italy4384-byte/your-life-project',
-      loadSidebar: false, // 禁用原有侧边栏，使用自定义侧边导航
-      subMaxLevel: 2,
+      loadSidebar: false,
+      subMaxLevel: 3,
       markdown: {
         renderer: {
           heading: function(text, level) {
             let icon = "fas fa-circle";
-            if (text.includes("项目介绍")) icon = "fas fa-book";
-            if (text.includes("核心体系")) icon = "fas fa-star";
-            if (text.includes("实施规划")) icon = "fas fa-road";
-            if (text.includes("关于我们")) icon = "fas fa-info-circle";
+            if (text.includes("项目简介")) icon = "fas fa-info-circle";
+            if (text.includes("核心优势")) icon = "fas fa-star";
+            if (text.includes("快速导航")) icon = "fas fa-map-signs";
             return `<h${level}><i class="${icon}"></i>${text}</h${level}>`;
           }
         }
