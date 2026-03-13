@@ -5,30 +5,16 @@
   <title>你的人生 - 全人成长赋能生态系统</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
   <style>
-    /* 调整侧边栏宽度和标题样式 */
+    /* 只优化侧边栏标题，不改动其他布局 */
+    .sidebar h1.app-name {
+      font-size: 16px !important;
+      padding: 8px 15px !important;
+      margin: 0 !important;
+      text-align: left;
+    }
+    /* 让侧边栏整体更紧凑一点 */
     .sidebar {
-      width: 220px !important;
-    }
-    .app-name {
-      font-size: 18px !important;
-      padding: 10px 15px !important;
-      text-align: center;
-      color: #2c3e50;
-      font-weight: 600;
-    }
-    /* 调整内容区域边距 */
-    .content {
-      margin-left: 240px !important;
-      max-width: 800px;
-    }
-    /* 美化链接和标题 */
-    a {
-      color: #3498db !important;
-    }
-    h2 {
-      color: #2c3e50 !important;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 8px;
+      padding-top: 10px !important;
     }
   </style>
 </head>
@@ -40,9 +26,7 @@
       name: '你的人生',
       repo: 'https://github.com/italy4384-byte/your-life-project',
       loadSidebar: true,
-      subMaxLevel: 2,
-      // 隐藏默认的侧边栏标题（可选）
-      // name: '',
+      subMaxLevel: 2
     }
   </script>
 </body>
