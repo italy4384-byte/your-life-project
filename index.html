@@ -2,12 +2,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>你的人生 - 全人成长赋能生态系统</title>
+<title>你的人生 - 全人成长赋能生态系统</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* 全局云朵背景 */
+    /* 全局云朵背景 —— 加深、更清晰 */
     body {
       background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center fixed !important;
       background-size: cover !important;
@@ -17,7 +17,7 @@
       font-family: "Microsoft Yahei", sans-serif;
     }
 
-    /* 全局遮罩 */
+    /* 遮罩加深一点，让云朵更明显但不影响阅读 */
     body::before {
       content: "";
       position: fixed;
@@ -25,11 +25,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.75); /* 从 0.85 → 0.75 更透、云朵更清楚 */
       z-index: -1;
     }
 
-    /* 1. 顶部导航条（真实文件链接） */
+    /* 顶部导航 */
     .top-nav {
       width: 100%;
       height: 70px;
@@ -68,7 +68,7 @@
       margin-right: 8px;
     }
 
-    /* 下拉菜单（文件链接） */
+    /* 下拉菜单 */
     .top-nav .dropdown-menu {
       display: none;
       position: absolute;
@@ -103,7 +103,7 @@
       display: block;
     }
 
-    /* 2. 主内容区（取消竖向导航后加宽） */
+    /* 主内容区（无侧边栏，加宽） */
     .main-content {
       margin: 80px 50px 70px 50px !important;
       padding: 0 40px !important;
@@ -115,7 +115,7 @@
       min-height: calc(100vh - 150px);
     }
 
-    /* 标题容器 */
+    /* 标题 */
     .title-container {
       display: block !important;
       margin: 20px 0 40px !important;
@@ -140,7 +140,7 @@
       padding-right: 10px !important;
     }
 
-    /* 内容区块 */
+    /* 内容块 */
     .content-block {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 12px;
@@ -191,14 +191,13 @@
       font-size: 10px;
     }
 
-    /* 链接样式 */
     .main-content a {
       font-size: 16px !important;
       color: #3498db !important;
       text-decoration: underline !important;
     }
 
-    /* 3. 底部Footer（移除普惠文字） */
+    /* 底部 —— 已经删除你不要的那句话 */
     .footer {
       width: 100%;
       height: 60px;
@@ -223,167 +222,114 @@
       text-decoration: none !important;
     }
 
-    /* 锚点定位修正 */
     :target {
       scroll-margin-top: 90px;
     }
 
-    /* 移动端自适应 */
     @media (max-width: 1200px) {
-      .top-nav {
-        gap: 25px;
-      }
-      .main-content {
-        margin: 80px 30px 70px 30px !important;
-        max-width: calc(100% - 60px) !important;
-        padding: 0 30px !important;
-      }
+      .top-nav { gap: 25px; }
+      .main-content { margin: 80px 30px 70px 30px !important; padding: 0 30px !important; }
     }
     @media (max-width: 992px) {
-      .top-nav {
-        height: auto;
-        padding: 10px 15px;
-        gap: 15px;
-        justify-content: flex-start;
-      }
-      .top-nav .nav-item > a {
-        font-size: 15px !important;
-        padding: 8px 12px;
-      }
-      .main-content {
-        margin: 100px 20px 70px 20px !important;
-        max-width: calc(100% - 40px) !important;
-      }
-      .title-main { font-size: 40px !important; }
-      .title-sub { font-size: 22px !important; }
+      .top-nav { height: auto; padding: 10px 15px; gap: 15px; justify-content: flex-start; }
+      .main-content { margin: 100px 20px 70px 20px !important; }
     }
     @media (max-width: 768px) {
-      .content-block {
-        padding: 25px !important;
-      }
-      .footer {
-        font-size: 14px;
-        gap: 10px;
-        text-align: center;
-        flex-wrap: wrap;
-        height: auto;
-        padding: 10px 0;
-      }
+      .content-block { padding: 25px !important; }
     }
   </style>
 </head>
 <body>
-  <!-- 1. 顶部导航条（包含真实文件链接） -->
-  <div class="top-nav">
-    <div class="nav-item">
-      <a href="#/"><i class="fas fa-home"></i>首页</a>
-    </div>
-    <div class="nav-item">
-      <a href="javascript:;"><i class="fas fa-file-alt"></i>完整商业计划</a>
-      <div class="dropdown-menu">
-        <a href="./完整商业计划.md" target="_self"><i class="fas fa-file-word"></i>完整商业计划文档</a>
-        <a href="./商业计划-执行摘要.md" target="_self"><i class="fas fa-file-clipboard"></i>执行摘要</a>
-        <a href="./商业计划-市场分析.md" target="_self"><i class="fas fa-chart-line"></i>市场分析</a>
-        <a href="./商业计划-盈利模式.md" target="_self"><i class="fas fa-sack-dollar"></i>盈利模式</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <a href="javascript:;"><i class="fas fa-star"></i>核心体系文件</a>
-      <div class="dropdown-menu">
-        <a href="./核心体系-成长体系.md" target="_self"><i class="fas fa-seedling"></i>成长体系</a>
-        <a href="./核心体系-赋能体系.md" target="_self"><i class="fas fa-bolt"></i>赋能体系</a>
-        <a href="./核心体系-保障体系.md" target="_self"><i class="fas fa-shield-halved"></i>保障体系</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <a href="javascript:;"><i class="fas fa-road"></i>实施规划文件</a>
-      <div class="dropdown-menu">
-        <a href="./实施规划-启动阶段.md" target="_self"><i class="fas fa-rocket"></i>启动阶段</a>
-        <a href="./实施规划-执行阶段.md" target="_self"><i class="fas fa-person-running"></i>执行阶段</a>
-        <a href="./实施规划-优化阶段.md" target="_self"><i class="fas fa-arrows-spin"></i>优化阶段</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <a href="javascript:;"><i class="fas fa-users"></i>关于我们文件</a>
-      <div class="dropdown-menu">
-        <a href="./关于我们-团队介绍.md" target="_self"><i class="fas fa-user-group"></i>团队介绍</a>
-        <a href="./关于我们-联系方式.md" target="_self"><i class="fas fa-envelope"></i>联系方式</a>
-        <a href="./关于我们-愿景使命.md" target="_self"><i class="fas fa-lightbulb"></i>愿景使命</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <a href="javascript:;"><i class="fas fa-file-export"></i>其他文件</a>
-      <div class="dropdown-menu">
-        <a href="./用户调研分析报告.md" target="_self"><i class="fas fa-magnifying-glass-chart"></i>用户调研分析</a>
-        <a href="./风险评估与应对.md" target="_self"><i class="fas fa-triangle-exclamation"></i>风险评估</a>
-        <a href="./项目时间轴规划.md" target="_self"><i class="fas fa-calendar-days"></i>时间轴规划</a>
-      </div>
+
+<!-- 顶部导航（可点开文件） -->
+<div class="top-nav">
+  <div class="nav-item">
+    <a href="#/"><i class="fas fa-home"></i>首页</a>
+  </div>
+  <div class="nav-item">
+    <a href="javascript:;"><i class="fas fa-file-alt"></i>完整商业计划</a>
+    <div class="dropdown-menu">
+      <a href="./完整商业计划.md" target="_self"><i class="fas fa-file-word"></i>完整商业计划文档</a>
+      <a href="./商业计划-执行摘要.md" target="_self"><i class="fas fa-file-clipboard"></i>执行摘要</a>
+      <a href="./商业计划-市场分析.md" target="_self"><i class="fas fa-chart-line"></i>市场分析</a>
+      <a href="./商业计划-盈利模式.md" target="_self"><i class="fas fa-sack-dollar"></i>盈利模式</a>
     </div>
   </div>
-
-  <!-- 2. 主内容区（取消竖向导航） -->
-  <div class="main-content" id="app">
-    <!-- 首页内容 -->
-    <div class="title-container">
-      <span class="title-main">你的人生</span>
-      <span class="title-sub">- 全人成长赋能生态系统</span>
-    </div>
-
-    <div class="content-block">
-      <h2><i class="fas fa-info-circle"></i>项目简介</h2>
-      <p>「你的人生 - 全人成长赋能生态系统」致力于为每一位追求成长的个体提供全方位的成长支持体系，涵盖个人能力提升、职业发展规划、心理健康建设等多个维度，助力用户实现人生价值的最大化。</p>
-    </div>
-
-    <div class="content-block">
-      <h2><i class="fas fa-star"></i>核心优势</h2>
-      <ul>
-        <li>个性化成长路径设计，贴合不同用户的发展需求</li>
-        <li>多维度赋能体系，覆盖能力、资源、心态全方面</li>
-        <li>持续优化的实施策略，保证成长效果的落地性</li>
-        <li>专业的服务团队，提供全程陪伴式成长支持</li>
-      </ul>
-    </div>
-
-    <div class="content-block">
-      <h2><i class="fas fa-map-signs"></i>快速导航</h2>
-      <p>点击顶部导航栏中的对应菜单，可直接打开相关文件查看详细内容：</p>
-      <ul>
-        <li><strong>完整商业计划</strong>：包含项目的核心商业逻辑、市场分析、盈利模式等核心内容</li>
-        <li><strong>核心体系文件</strong>：详细阐述成长、赋能、保障三大核心体系的设计与落地</li>
-        <li><strong>实施规划文件</strong>：分阶段说明项目的启动、执行、优化全流程</li>
-        <li><strong>关于我们文件</strong>：介绍团队背景、联系方式及项目愿景使命</li>
-      </ul>
+  <div class="nav-item">
+    <a href="javascript:;"><i class="fas fa-star"></i>核心体系文件</a>
+    <div class="dropdown-menu">
+      <a href="./核心体系-成长体系.md" target="_self"><i class="fas fa-seedling"></i>成长体系</a>
+      <a href="./核心体系-赋能体系.md" target="_self"><i class="fas fa-bolt"></i>赋能体系</a>
+      <a href="./核心体系-保障体系.md" target="_self"><i class="fas fa-shield-halved"></i>保障体系</a>
     </div>
   </div>
+  <div class="nav-item">
+    <a href="javascript:;"><i class="fas fa-road"></i>实施规划文件</a>
+    <div class="dropdown-menu">
+      <a href="./实施规划-启动阶段.md" target="_self"><i class="fas fa-rocket"></i>启动阶段</a>
+      <a href="./实施规划-执行阶段.md" target="_self"><i class="fas fa-person-running"></i>执行阶段</a>
+      <a href="./实施规划-优化阶段.md" target="_self"><i class="fas fa-arrows-spin"></i>优化阶段</a>
+    </div>
+  </div>
+  <div class="nav-item">
+    <a href="javascript:;"><i class="fas fa-users"></i>关于我们文件</a>
+    <div class="dropdown-menu">
+      <a href="./关于我们-团队介绍.md" target="_self"><i class="fas fa-user-group"></i>团队介绍</a>
+      <a href="./关于我们-联系方式.md" target="_self"><i class="fas fa-envelope"></i>联系方式</a>
+      <a href="./关于我们-愿景使命.md" target="_self"><i class="fas fa-lightbulb"></i>愿景使命</a>
+    </div>
+  </div>
+</div>
 
-  <!-- 3. 底部Footer（移除普惠文字） -->
-  <div class="footer">
-    <p>© 2026 你的人生 - 全人成长赋能生态系统 版权所有</p>
-    <p>|</p>
-    <p>以成长为帆，赴人生山海 <a href="./关于我们-联系方式.md" target="_self"><i class="fas fa-envelope"></i> 联系我们</a></p>
+<!-- 主内容 -->
+<div class="main-content" id="app">
+  <div class="title-container">
+    <span class="title-main">你的人生</span>
+    <span class="title-sub">- 全人成长赋能生态系统</span>
   </div>
 
-  <!-- Docsify配置（支持Markdown文件加载） -->
-  <script>
-    window.$docsify = {
-      name: '',
-      repo: 'https://github.com/italy4384-byte/your-life-project',
-      loadSidebar: false,
-      subMaxLevel: 3,
-      markdown: {
-        renderer: {
-          heading: function(text, level) {
-            let icon = "fas fa-circle";
-            if (text.includes("项目简介")) icon = "fas fa-info-circle";
-            if (text.includes("核心优势")) icon = "fas fa-star";
-            if (text.includes("快速导航")) icon = "fas fa-map-signs";
-            return `<h${level}><i class="${icon}"></i>${text}</h${level}>`;
-          }
-        }
-      }
-    };
-  </script>
+  <div class="content-block">
+    <h2><i class="fas fa-info-circle"></i>项目简介</h2>
+    <p>「你的人生 - 全人成长赋能生态系统」致力于为每一位追求成长的个体提供全方位的成长支持体系，涵盖个人能力提升、职业发展规划、心理健康建设等多个维度，助力用户实现人生价值的最大化。</p>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <div class="content-block">
+    <h2><i class="fas fa-star"></i>核心优势</h2>
+    <ul>
+      <li>个性化成长路径设计，贴合不同用户的发展需求</li>
+      <li>多维度赋能体系，覆盖能力、资源、心态全方面</li>
+      <li>持续优化的实施策略，保证成长效果的落地性</li>
+      <li>专业的服务团队，提供全程陪伴式成长支持</li>
+    </ul>
+  </div>
+
+  <div class="content-block">
+    <h2><i class="fas fa-map-signs"></i>快速导航</h2>
+    <p>点击顶部导航栏中的对应菜单，可直接打开相关文件查看详细内容：</p>
+    <ul>
+      <li><strong>完整商业计划</strong>：包含项目的核心商业逻辑、市场分析、盈利模式等核心内容</li>
+      <li><strong>核心体系文件</strong>：详细阐述成长、赋能、保障三大核心体系的设计与落地</li>
+      <li><strong>实施规划文件</strong>：分阶段说明项目的启动、执行、优化全流程</li>
+      <li><strong>关于我们文件</strong>：介绍团队背景、联系方式及项目愿景使命</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 底部（已清理） -->
+<div class="footer">
+  <p>© 2026 你的人生 - 全人成长赋能生态系统 版权所有</p>
+  <p>|</p>
+  <p><a href="./关于我们-联系方式.md" target="_self"><i class="fas fa-envelope"></i> 联系我们</a></p>
+</div>
+
+<script>
+  window.$docsify = {
+    name: '',
+    repo: '',
+    loadSidebar: false,
+    subMaxLevel: 3
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
 </html>
