@@ -5,14 +5,18 @@
   <title>你的人生 - 全人成长赋能生态系统</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
+  <!-- 引入Font Awesome图标库（极简图标） -->
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* 全局统一云朵背景（清空所有草原相关设定） */
+    /* 全局云朵背景 */
     body {
       background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center fixed !important;
-      background-size: cover !important; /* 自适应铺满屏幕 */
+      background-size: cover !important;
       position: relative !important;
+      margin: 0;
+      padding: 0;
     }
-    /* 全局遮罩：平衡云朵背景与文字可读性 */
+    /* 全局遮罩：平衡背景与文字可读性 */
     body::before {
       content: "";
       position: fixed;
@@ -20,23 +24,60 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.85); /* 适度透明，保留云朵纹理 */
+      background: rgba(255, 255, 255, 0.85);
       z-index: -1;
     }
+
+    /* 1. 顶部导航条（核心官网化优化） */
+    .top-nav {
+      width: 100%;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .top-nav a {
+      color: #2c4a6b !important;
+      font-size: 18px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .top-nav a:hover {
+      background: rgba(52, 152, 219, 0.1);
+      color: #3498db !important;
+    }
+    .top-nav a i {
+      margin-right: 8px;
+    }
+
     /* 隐藏左侧原标题 */
     .sidebar h1.app-name {
       display: none !important;
     }
-    /* 侧边栏：统一云朵背景+半透明遮罩 */
+    /* 侧边栏：适配顶部导航，下移内容 */
     .sidebar {
       width: 280px !important;
-      padding: 20px 10px !important;
+      padding: 80px 10px 20px !important;
       background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center !important;
       background-size: cover !important;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-      position: relative !important;
+      position: fixed !important;
+      height: 100vh !important;
+      box-sizing: border-box;
     }
-    /* 侧边栏遮罩：保证导航文字清晰 */
+    /* 侧边栏遮罩 */
     .sidebar::before {
       content: "";
       position: absolute;
@@ -47,139 +88,218 @@
       background: rgba(255, 255, 255, 0.9);
       z-index: -1;
     }
-    /* 标题容器：整体居中，副标题单独右对齐 */
+
+    /* 标题容器：适配顶部导航，下移+居中 */
     .title-container {
       display: block !important;
-      margin-bottom: 40px !important;
+      margin: 80px 0 40px !important;
       width: 100% !important;
       text-align: center !important;
     }
-    /* 主标题：居中+深蓝色系（适配云朵）+轻微阴影 */
+    /* 主标题：云朵色系+加粗 */
     .title-main {
       font-size: 48px !important;
       font-weight: 900 !important;
-      color: #2c4a6b !important; /* 适配云朵的深蓝色文字 */
+      color: #2c4a6b !important;
       display: block !important;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     }
-    /* 副标题：更小一号+右对齐+浅藏青色 */
+    /* 副标题：小一号+右对齐 */
     .title-sub {
       font-size: 24px !important;
       font-weight: 600 !important;
-      color: #4a6d94 !important; /* 适配云朵的浅藏青色文字 */
+      color: #4a6d94 !important;
       display: block !important;
       text-align: right !important;
       margin-top: 5px !important;
       padding-right: 10px !important;
     }
-    /* 右侧内容区：统一云朵背景+半透明遮罩 */
+
+    /* 右侧内容区：适配顶部导航+分区块设计 */
     .content {
-      margin-left: 300px !important;
-      padding: 40px 2% !important;
-      font-size: 24px !important;
-      line-height: 2.5;
-      letter-spacing: 1.5px;
+      margin: 80px 0 60px 300px !important;
+      padding: 0 2% !important;
+      font-size: 20px !important;
+      line-height: 2.2;
+      letter-spacing: 1px;
       max-width: calc(100% - 300px);
       box-sizing: border-box;
-      background: url('http://gd-hbimg.huaban.com/80635183f29e3b11eb8dbaa696e36578297b2f1fbb2e-Q1XVXN_fw658') no-repeat center center !important;
-      background-size: cover !important;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-      border-radius: 8px;
-      position: relative !important;
     }
-    /* 内容区遮罩：保证阅读清晰 */
-    .content::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 8px;
-      z-index: -1;
+
+    /* 2. 内容分区块：卡片式设计（核心饱满化优化） */
+    .content-block {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid #3498db;
     }
-    /* 其他标题样式：适配云朵色系（清空草原相关） */
-    .content h2 {
-      font-size: 40px !important;
-      font-weight: 800 !important;
-      margin: 25px 0 !important;
-      color: #2c4a6b !important;
-      border-bottom: 3px solid #e8edf2 !important; /* 浅蓝分割线 */
-      padding-bottom: 10px !important;
-    }
-    .content h3 {
+    .content-block h2 {
       font-size: 32px !important;
-      font-weight: 700 !important;
-      margin: 20px 0 !important;
-      color: #4a6d94 !important;
+      font-weight: 800 !important;
+      color: #2c4a6b !important;
+      margin: 0 0 20px !important;
+      padding-bottom: 10px !important;
+      border-bottom: 2px solid #e8edf2 !important;
     }
-    /* 链接：适配云朵的天蓝色，更醒目 */
+    .content-block h2 i {
+      color: #3498db;
+      margin-right: 10px;
+    }
+    .content-block p, .content-block ul {
+      color: #1e3a58 !important;
+      margin-bottom: 15px !important;
+    }
+    .content-block li {
+      margin: 10px 0 !important;
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
+    }
+    .content-block li::before {
+      content: "\f0c8"; /* 小圆点图标 */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 400;
+      color: #3498db;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    /* 链接样式 */
     .content a {
-      font-size: 24px !important;
+      font-size: 20px !important;
       color: #3498db !important;
       text-decoration: underline !important;
     }
-    /* 正文：深蓝色系，保证对比度（清空草原相关） */
-    .content p, .content ul, .content ol {
-      margin-bottom: 25px !important;
+
+    /* 3. 底部Footer（官网闭环优化） */
+    .footer {
       width: 100%;
-      color: #1e3a58 !important;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4a6d94;
+      font-size: 16px;
+      gap: 20px;
     }
-    .content li {
-      margin: 15px 0 !important;
+    .footer p {
+      margin: 0;
     }
+    .footer a {
+      color: #3498db !important;
+      text-decoration: none !important;
+    }
+
     /* 移动端自适应 */
     @media (max-width: 992px) {
+      .top-nav {
+        gap: 20px;
+      }
+      .top-nav a {
+        font-size: 16px !important;
+      }
       .sidebar {
         width: 220px !important;
       }
       .content {
         margin-left: 240px !important;
         max-width: calc(100% - 240px);
-        padding: 30px 2% !important;
-        font-size: 20px !important;
       }
       .title-main { font-size: 40px !important; }
       .title-sub { font-size: 20px !important; }
-      .content h2 { font-size: 32px !important; }
-      .content h3 { font-size: 28px !important; }
     }
     @media (max-width: 768px) {
+      .top-nav {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 10px;
+        gap: 10px;
+      }
       .sidebar {
         width: 100% !important;
         height: auto !important;
         position: relative !important;
-        margin-bottom: 20px !important;
+        padding: 20px 10px !important;
       }
       .content {
-        margin-left: 0 !important;
+        margin: 120px 0 60px 0 !important;
         max-width: 100% !important;
-        padding: 20px 2% !important;
+        padding: 0 5% !important;
+      }
+      .footer {
+        font-size: 14px;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- 1. 顶部导航条 -->
+  <div class="top-nav">
+    <a href="#/"><i class="fas fa-home"></i>首页</a>
+    <a href="#/project"><i class="fas fa-book"></i>项目介绍</a>
+    <a href="#/core"><i class="fas fa-star"></i>核心体系</a>
+    <a href="#/plan"><i class="fas fa-road"></i>实施规划</a>
+    <a href="#/about"><i class="fas fa-info-circle"></i>关于我们</a>
+  </div>
+
   <div id="app"></div>
+
+  <!-- 3. 底部Footer -->
+  <div class="footer">
+    <p>© 2026 你的人生 - 全人成长赋能生态系统</p>
+    <p>|</p>
+    <p>以成长为帆，赴人生山海 <a href="#/contact"><i class="fas fa-envelope"></i> 联系我们</a></p>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script>
     window.$docsify = {
-      name: '', // 清空左侧标题
+      name: '',
       repo: 'https://github.com/italy4384-byte/your-life-project',
       loadSidebar: true,
       subMaxLevel: 2,
-      // 强制拆分标题为两行（居中+右对齐）
+      // 标题拆分+区块化渲染
       markdown: {
         renderer: {
           heading: function(text, level) {
+            // 封面标题
             if (level === 1 && text.includes('你的人生 - 全人成长赋能生态系统')) {
               return `<div class="title-container">
                 <span class="title-main">你的人生</span>
                 <span class="title-sub">- 全人成长赋能生态系统</span>
               </div>`;
             }
+            // 内容区块标题（自动加图标）
+            if (level === 2) {
+              let icon = "fas fa-circle";
+              if (text.includes("项目介绍")) icon = "fas fa-book";
+              if (text.includes("核心体系")) icon = "fas fa-star";
+              if (text.includes("实施规划")) icon = "fas fa-road";
+              if (text.includes("关于我们")) icon = "fas fa-info-circle";
+              return `<h2><i class="${icon}"></i>${text}</h2>`;
+            }
             return this.origin.heading.apply(this, arguments);
+          },
+          // 段落自动包裹成区块
+          paragraph: function(text) {
+            if (text.trim().length > 0 && !text.startsWith('<')) {
+              return `<div class="content-block">${text}</div>`;
+            }
+            return text;
+          },
+          // 列表自动包裹成区块
+          list: function(body, ordered) {
+            return `<div class="content-block"><${ordered ? 'ol' : 'ul'}>${body}</${ordered ? 'ol' : 'ul'}></div>`;
           }
         }
       }
