@@ -5,16 +5,26 @@
   <title>你的人生 - 全人成长赋能生态系统</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
   <style>
-    /* 只优化侧边栏标题，不改动其他布局 */
+    /* 竖排、放大、橙黄色标题 */
     .sidebar h1.app-name {
-      font-size: 16px !important;
-      padding: 8px 15px !important;
+      font-size: 28px !important;
+      writing-mode: vertical-rl; /* 竖排文字 */
+      text-orientation: mixed;
+      color: #ff9800 !important; /* 橙黄色 */
+      padding: 20px 10px !important;
       margin: 0 !important;
-      text-align: left;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    /* 让侧边栏整体更紧凑一点 */
+    /* 侧边栏适配竖排标题 */
     .sidebar {
-      padding-top: 10px !important;
+      width: 60px !important; /* 收窄侧边栏只放竖排标题 */
+      padding-top: 0 !important;
+    }
+    .content {
+      margin-left: 80px !important; /* 给内容区留出空间 */
     }
   </style>
 </head>
